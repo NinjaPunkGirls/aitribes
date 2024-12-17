@@ -1,12 +1,12 @@
 # AI Tribes
 
-Name your Tribe:
+1. Name your Tribe:
 Establish a unique identity that reflects your interests and goals. Attract like minds to contribute to your tribe.
 
-Create a Logo:
+2. Create a Logo:
 Enhance your branding and make your tribe recognizable, foster community and belonging among members.
 
-Add a Description:
+3. Add a Description:
 Describe your Tribe, its mission, interests, aesthetics or organising principles. Explain how your tribe's memebers can contribute to the success of your tribe and the realisation of its vision
 
 4. Launch Your Tribe's AI:
