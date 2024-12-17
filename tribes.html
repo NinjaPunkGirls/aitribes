@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tribes</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for Button Styles -->
+    <style>
+        .btn-custom {
+            background-color: white;
+            color: black;
+            border: 1px solid black; /* Thin black stroke */
+            font-size: 0.8rem; /* Smaller font size */
+        }
+        .btn-custom:hover {
+            background-color: #f8f9fa; /* Light gray on hover */
+        }
+        .navbar-brand img {
+            width: 50px; /* Set the logo width to a smaller size */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .form-control {
+            font-size: 0.8rem; /* Smaller font size for inputs */
+        }
+        .card {
+            margin-bottom: 1rem; /* Reduce space between cards */
+        }
+        /* Preview Window Styles */
+        .preview-window {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .preview-logo {
+            width: 100%;
+            height: auto;
+            max-height: 100px; /* Limit logo height */
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="tribes_logo.png" alt="AI Tribes Logo"> <!-- Logo path -->
+                AI Tribes
+            </a>
+            <button class="btn btn-custom btn-sm ms-auto" id="connectWalletButton">Connect Wallet</button>
+        </div>
+    </nav>
+
+    <div class="container mb-3">
+        <h1 class="display-6 mb-2">Welcome to AI Tribes</h1>
+        <ul class="list-unstyled">
+            <li>Name your AI Tribe /</li>
+            <li>Create your Logo /</li>
+            <li>Add a Description /</li>
+            <li>Launch your AI /</li>
+            <li>Add your socials /</li>
+            <li>Connect a Wallet /</li>
+            <li>Launch your Token /</li>
+            <li>Create your Tribe's PFPs /</li>
+        </ul>
+    </div>
+
+<!-- Preview Window -->
+<div class="preview-window">
+    <h5 id="previewTribeName">AI Tribe Name</h5>
+    <img id="previewLogo" class="preview-logo" src="" alt="AI Tribe Logo" style="display: none;">
+    <p id="previewDescription">Description of your AI tribe will appear here.</p>
+</div>
+
+<!-- AI Tribe Creation Form -->
+<div class="container mb-3">
+    <h2 class="h5">Name Your AI Tribe</h2>
+    <form>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="tribeName" placeholder="AI Tribe Name" required oninput="updatePreview()">
+            </div>
+            <div class="col-md-6">
+                <h4 class="mt-3">Give your tribe a description</h4>
+                <textarea class="form-control" id="tribeDescription" rows="1" placeholder="Description" required oninput="updatePreview()"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Token Creation Form -->
+<!-- Token Creation Form -->
+<div class="container mb-3">
+    <h2 class="h5">Give Your AI Tribe a Token</h2>
+    <form>
+        <div class="row mb-2">
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="tokenName" placeholder="Token Name" required>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="tokenSymbol" placeholder="Token Symbol" required>
+            </div>
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="initialSupply" placeholder="Initial Supply" value="10000000" required> <!-- Default supply set here -->
+            </div>
+        </div>
+        <button type="submit" class="btn btn-custom btn-sm">Create Token</button>
+    </form>
+</div>
+
+    <!-- Logo Creation Form -->
+    <div class="container mb-3">
+        <h2 class="h5">Give Your AI Tribe a Logo</h2>
+        <form>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <input type="file" class="form-control" id="logoUpload" accept="image/*" onchange="previewLogo()">
+                </div>
+                <div class="col-md-6">
+                    <textarea class="form-control" id="logoDescription" rows="1" placeholder="Describe Logo" required oninput="updatePreview()"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-custom btn-sm">Generate Logo</button>
+        </form>
+    </div>
+
+    <!-- Grid Layout for Sections -->
+    <div class="container mb-3">
+        <div class="row g-2">
+            <!-- Twitter/X Section -->
+            <div class="col-md-4">
+                <div class="card p-2">
+                    <h2 class="h6">Add Your AI Tribe's Twitter/X Profile</h2>
+                    <p>Connect your Twitter/X account to engage members.</p>
+                    <button class="btn btn-custom btn-sm">Add Twitter/X Profile</button>
+                </div>
+            </div>
+
+            <!-- GitHub Section -->
+            <div class="col-md-4">
+                <div class="card p-2">
+                    <h2 class="h6">Connect Your AI Tribe's GitHub</h2>
+                    <p>Link your GitHub to showcase projects.</p>
+                    <button class="btn btn-custom btn-sm">Connect GitHub</button>
+                    <button class="btn btn-custom btn-sm mt-1">Launch New Repo</button>
+                </div>
+            </div>
+
+            <!-- Wallet Section -->
+            <div class="col-md-4">
+                <div class="card p-2">
+                    <h2 class="h6">Connect Your AI Tribe's Wallet</h2>
+                    <p>Connect your wallet to manage assets.</p>
+                    <div class="mt-1">
+                        <button class="btn btn-custom btn-sm">Solana</button>
+                        <button class="btn btn-custom btn-sm">Ethereum</button>
+                        <button class="btn btn-custom btn-sm">Bitcoin</button>
+                        <button class="btn btn-custom btn-sm">Other</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Section -->
+            <div class="col-md-4">
+                <div class="card p-2">
+                    <h2 class="h6">Connect Your AI Tribe's Google Cloud</h2>
+                    <p>Link your Google account for cloud access.</p>
+                    <button class="btn btn-custom btn-sm">Connect Google</button>
+                </div>
+            </div>
+
+            <!-- XAI Section -->
+            <div class="col-md-4">
+                <div class="card p-2">
+                    <h2 class="h6">Connect Your AI Tribe's AI APIs</h2>
+                    <p>Integrate AI APIs to empower your tribe.</p>
+                    <div class="d-flex flex-column">
+                        <button class="btn btn-custom btn-sm mb-1">Connect XAI</button>
+                        <button class="btn btn-custom btn-sm mb-1">Connect OpenAI</button>
+                        <button class="btn btn-custom btn-sm">Connect Claude</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NFT Mint Section -->
+            <div class="col-md-4">
+                <div class="card p-2">
+                    <h2 class="h6">Create Your AI Tribe's PFP NFTs</h2>
+                    <p>Mint NFTs that represent your tribe.</p>
+                    <button class="btn btn-custom btn-sm">Mint NFTs</button>
+                </div>
+            </div>
+
+            <!-- Facebook Section -->
+            <div class="col-md-4">
+                <div class="card p-2">
+                    <h2 class="h6">Connect Your AI Tribe's Facebook</h2>
+                    <p>Link your Facebook to share updates.</p>
+                    <button class="btn btn-custom btn-sm">Connect Facebook</button>
+                </div>
+            </div>
+
+            <!-- Instagram Section -->
+            <div class="col-md-4">
+                <div class="card p-2">
+                    <h2 class="h6">Connect Your AI Tribe's Instagram</h2>
+                    <p>Integrate Instagram to showcase activities.</p>
+                    <button class="btn btn-custom btn-sm">Connect Instagram</button>
+                </div>
+            </div>
+
+            <!-- Discord Section -->
+            <div class="col-md-4">
+                <div class="card p-2">
+                    <h2 class="h6">Connect Your AI Tribe's Discord</h2>
+                    <p>Join Discord for real-time communication.</p>
+                    <button class="btn btn-custom btn-sm">Connect Discord</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Socials Section -->
+    <div class="container mb-3">
+        <div class="card p-3">
+            <h2 class="h5">AI Tribes Socials</h2>
+            <p>Stay connected with your AI tribe through social media:</p>
+            <ul class="list-unstyled">
+                <li><a href="https://twitter.com" class="text-primary">Twitter</a></li>
+                <li><a href="https://facebook.com" class="text-primary">Facebook</a></li>
+                <li><a href="https://instagram.com" class="text-primary">Instagram</a></li>
+                <li><a href="https://discord.com" class="text-primary">Discord</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="bg-white p-3 mt-3 text-center shadow-md">
+        <p>&copy; 2023 AI Tribes. All rights reserved.</p>
+        <div>
+            <button class="btn btn-custom btn-sm me-1">Home</button>
+            <button class="btn btn-custom btn-sm me-1">About</button>
+            <button class="btn btn-custom btn-sm me-1">Services</button>
+            <button class="btn btn-custom btn-sm">Contact</button>
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function updatePreview() {
+            const tribeName = document.getElementById('tribeName').value;
+            const tribeDescription = document.getElementById('tribeDescription').value;
+            document.getElementById('previewTribeName').innerText = tribeName || 'AI Tribe Name';
+            document.getElementById('previewDescription').innerText = tribeDescription || 'Description of your AI tribe will appear here.';
+        }
+
+        function previewLogo() {
+            const logoInput = document.getElementById('logoUpload');
+            const previewImage = document.getElementById('previewLogo');
+            const file = logoInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                previewImage.src = '';
+                previewImage.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
